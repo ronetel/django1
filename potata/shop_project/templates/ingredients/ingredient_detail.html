@@ -1,0 +1,8 @@
+<h1>{{ ingredient.name }}</h1>
+<p>Поставщик: {{ ingredient.supplier.name }}</p>
+<p>Склад: {{ ingredient.stock.name }}</p>
+<p>Количество: {{ ingredient.quantity }}</p>
+<img src="{{ ingredient.img.url }}" alt="{{ ingredient.name }}" />
+<a href="{% url 'ingredient_update' ingredient.pk %}">Изменить</a>
+<a href="{% url 'ingredient_delete' ingredient.pk %}">Удалить</a>
+<a href="{% url 'ingredient_list' %}">Назад к списку</a>

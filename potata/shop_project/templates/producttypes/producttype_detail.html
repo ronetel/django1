@@ -1,0 +1,4 @@
+<h1>{{ producttype.name }}</h1>
+<a href="{% url 'producttype_update' producttype.pk %}">Изменить</a>
+<a href="{% url 'producttype_delete' producttype.pk %}">Удалить</a>
+<a href="{% url 'producttype_list' %}">Назад к списку</a>

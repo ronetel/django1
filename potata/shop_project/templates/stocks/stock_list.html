@@ -1,0 +1,11 @@
+<h1>Склады</h1>
+<a href="{% url 'stock_create' %}">Добавить новый склад</a>
+<ul>
+  {% for stock in stocks %}
+  <li>
+    <a href="{% url 'stock_detail' stock.pk %}">{{ stock.name }}</a>
+    <a href="{% url 'stock_update' stock.pk %}">Изменить</a>
+    <a href="{% url 'stock_delete' stock.pk %}">Удалить</a>
+  </li>
+  {% endfor %}
+</ul>

@@ -1,0 +1,8 @@
+<h1>
+  {% if form.instance.pk %}Изменить{% else %}Добавить{% endif %} поставщика
+</h1>
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Сохранить</button>
+</form>
+<a href="{% url 'supplier_list' %}">Назад к списку</a>

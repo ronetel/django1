@@ -1,0 +1,7 @@
+<h1>{{ product.name }}</h1>
+<p>Цена: {{ product.price }}</p>
+<p>Тип: {{ product.product_type.name }}</p>
+<img src="{{ product.img.url }}" alt="{{ product.name }}" />
+<a href="{% url 'product_update' product.pk %}">Изменить</a>
+<a href="{% url 'product_delete' product.pk %}">Удалить</a>
+<a href="{% url 'product_list' %}">Назад к списку</a>

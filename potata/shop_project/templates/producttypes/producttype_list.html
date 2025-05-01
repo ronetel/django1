@@ -1,0 +1,13 @@
+<h1>Типы продуктов</h1>
+<a href="{% url 'producttype_create' %}">Добавить новый тип продукта</a>
+<ul>
+  {% for producttype in producttypes %}
+  <li>
+    <a href="{% url 'producttype_detail' producttype.pk %}"
+      >{{ producttype.name }}</a
+    >
+    <a href="{% url 'producttype_update' producttype.pk %}">Изменить</a>
+    <a href="{% url 'producttype_delete' producttype.pk %}">Удалить</a>
+  </li>
+  {% endfor %}
+</ul>

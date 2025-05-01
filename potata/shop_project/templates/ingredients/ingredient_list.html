@@ -1,0 +1,14 @@
+<h1>Ингредиенты</h1>
+<a href="{% url 'ingredient_create' %}">Добавить новый ингредиент</a>
+<ul>
+  {% for ingredient in ingredients %}
+  <li>
+    <a href="{% url 'ingredient_detail' ingredient.pk %}"
+      >{{ ingredient.name }}</a
+    >
+    <a href="{% url 'ingredient_update' ingredient.pk %}">Изменить</a>
+    <a href="{% url 'ingredient_delete' ingredient.pk %}">Удалить</a>
+    <img src="{{ ingredient.img.url }}" alt="{{ ingredient.name }}" />
+  </li>
+  {% endfor %}
+</ul>

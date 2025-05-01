@@ -1,0 +1,4 @@
+<h1>{{ stock.name }}</h1>
+<a href="{% url 'stock_update' stock.pk %}">Изменить</a>
+<a href="{% url 'stock_delete' stock.pk %}">Удалить</a>
+<a href="{% url 'stock_list' %}">Назад к списку</a>

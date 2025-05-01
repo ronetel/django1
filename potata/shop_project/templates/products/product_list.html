@@ -1,0 +1,12 @@
+<h1>Продукты</h1>
+<a href="{% url 'product_create' %}">Добавить новый продукт</a>
+<ul>
+  {% for product in products %}
+  <li>
+    <a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a>
+    <a href="{% url 'product_update' product.pk %}">Изменить</a>
+    <a href="{% url 'product_delete' product.pk %}">Удалить</a>
+    <img src="{{ product.img.url }}" alt="{{ product.name }}" />
+  </li>
+  {% endfor %}
+</ul>
