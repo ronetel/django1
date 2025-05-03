@@ -1,14 +1,25 @@
-<h1>Ингредиенты</h1>
-<a href="{% url 'ingredient_create' %}">Добавить новый ингредиент</a>
-<ul>
-  {% for ingredient in ingredients %}
-  <li>
-    <a href="{% url 'ingredient_detail' ingredient.pk %}"
-      >{{ ingredient.name }}</a
-    >
-    <a href="{% url 'ingredient_update' ingredient.pk %}">Изменить</a>
-    <a href="{% url 'ingredient_delete' ingredient.pk %}">Удалить</a>
-    <img src="{{ ingredient.img.url }}" alt="{{ ingredient.name }}" />
-  </li>
-  {% endfor %}
-</ul>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title_name %}
+Ингредиенты
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto p-4">
+  <h1 class="text-3xl font-bold mb-6 text-center">Ингредиенты</h1>
+  <a href="{% url 'ingredient_create' %}" class="bg-red-900 hover:bg-main text-white px-4 py-2 rounded mb-4 inline-block">Добавить новый ингредиент</a>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    {% for ingredient in ingredients %}
+    <div class="bg-white shadow-lg rounded-lg p-4 transform transition-transform duration-300 hover:scale-105">
+      <h2 class="text-xl font-semibold mb-2">{{ ingredient.name }}</h2>
+      <a href="{% url 'ingredient_detail' ingredient.pk %}"><img src="{{ ingredient.img.url }}" alt="{{ ingredient.name }}" class="w-full h-48 object-cover rounded mb-4">
+      <div class="flex justify-between items-center">
+        <a href="{% url 'ingredient_update' ingredient.pk %}" class="hover:underline">Изменить</a>
+        <a href="{% url 'ingredient_delete' ingredient.pk %}" class="hover:underline">Удалить</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

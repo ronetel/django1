@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title_name %}
+Удалить продукт
+{% endblock %}
+
+{% block content %}
+<div class="container p-4 max-w-lg">
+  <h1 class="text-3xl font-bold mb-4">Удалить продукт</h1>
+  <p class="mb-4">Вы уверены, что хотите удалить "{{ product.name }}"?</p>
+  <form method="post" class="flex justify-end">
+    {% csrf_token %}
+    <button type="submit" class="bg-red-900 hover:bg-main text-white font-bold py-2 px-4 rounded">Подтвердить</button>
+  </form>
+  <a href="{% url 'product_list' %}" class="hover:underline">Отмена</a>
+</div>
+{% endblock %}

@@ -1,6 +1,11 @@
+{% extends "base.html" %} {%load static%} {%block title_name%} Создание продукта
+{% endblock %} {% block content %}
+<div class='container'>
 <h1>{% if form.instance.pk %}Изменить{% else %}Добавить{% endif %} склад</h1>
 <form method="post">
   {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Сохранить</button>
+  <button class='hover:underline' type="submit">Сохранить</button>
 </form>
-<a href="{% url 'stock_list' %}">Назад к списку</a>
+<a class='hover:underline' href="{% url 'stock_list' %}">Назад к списку</a>
+</div>
+{% endblock %}

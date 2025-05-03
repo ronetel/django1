@@ -7,7 +7,7 @@ class ProductType(models.Model):
     name = models.CharField(max_length=MAX_LENGTH, unique=True, verbose_name="Тип продукта")
 
     def __str__(self):
-        return self.name
+        return f" {self.name}"
     
     class Meta:
         verbose_name = 'Категория'
@@ -17,10 +17,10 @@ class Product(models.Model):
     name = models.CharField(max_length=MAX_LENGTH, unique=True, verbose_name="Имя продукта")
     price = models.FloatField( verbose_name="Цена")
     img = models.ImageField(upload_to="image/%Y/%m/%d", verbose_name="Фото")
-    product_type = models.ForeignKey(ProductType, on_delete=models.PROTECT)
+    product_type = models.ForeignKey(ProductType, on_delete=models.PROTECT, verbose_name="Тип продукта")
 
     def __str__(self):
-        return self.name
+        return f"{self.name}"
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
@@ -78,8 +78,8 @@ class Order(models.Model):
         verbose_name_plural = 'Заказы'
 
 class ProductInCheck(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.PROTECT)
+    product = models.ForeignKey(Product, on_delete=models.PROTECT)
 
     def __str__(self):
         return f"{self.product} in Order {self.order.id}"

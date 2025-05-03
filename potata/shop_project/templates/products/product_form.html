@@ -1,6 +1,18 @@
-<h1>{% if form.instance.pk %}Изменить{% else %}Добавить{% endif %} продукт</h1>
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %} {{ form.as_p }}
-  <button type="submit">Сохранить</button>
-</form>
-<a href="{% url 'product_list' %}">Назад к списку</a>
+{% extends "base.html" %}
+{%load static%} 
+
+{%block title_name%} 
+  {%if form.instance.pk %}Изменить{% else %}Добавить{% endif %} продукт 
+{% endblock %}
+
+{% block content %}
+<div class='container'>
+  <h1>{%if form.instance.pk %}Изменить{% else %}Добавить{% endif %} продукт </h1>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %} 
+      {{ form.as_p }}
+      <button class='hover:underline' type="submit">Сохранить</button>
+    </form>
+    <a class='hover:underline' href="{% url 'product_list' %}">Назад к списку</a>
+</div>
+{% endblock %}

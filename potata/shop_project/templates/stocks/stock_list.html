@@ -1,11 +1,24 @@
-<h1>Склады</h1>
-<a href="{% url 'stock_create' %}">Добавить новый склад</a>
-<ul>
-  {% for stock in stocks %}
-  <li>
-    <a href="{% url 'stock_detail' stock.pk %}">{{ stock.name }}</a>
-    <a href="{% url 'stock_update' stock.pk %}">Изменить</a>
-    <a href="{% url 'stock_delete' stock.pk %}">Удалить</a>
-  </li>
-  {% endfor %}
-</ul>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title_name %}
+Склады
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto p-4">
+  <h1 class="text-3xl font-bold mb-6 text-center">Склады</h1>
+  <a href="{% url 'stock_create' %}" class="bg-red-900 hover:bg-main text-white px-4 py-2 rounded mb-4 inline-block">Добавить новый склад</a>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    {% for stock in stocks %}
+    <div class="bg-white shadow-lg rounded-lg p-4 transform transition-transform duration-300 hover:scale-105">
+      <h2 class="text-xl font-semibold mb-2">{{ stock.name }}</h2>
+      <div class="flex justify-between items-center">
+        <a href="{% url 'stock_update' stock.pk %}" class="hover:underline">Изменить</a>
+        <a href="{% url 'stock_delete' stock.pk %}" class="hover:underline">Удалить</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

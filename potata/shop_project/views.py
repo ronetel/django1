@@ -5,8 +5,8 @@ from .models import *
 from .forms import *
 
 # Create your views here.
-def base_view(request):
-    return render(request, 'base.html')
+def main_view(request):
+    return render(request, 'main.html')
 def contacts_view(request):
     return render(request, 'contacts.html')
 def find_us_view(request):
@@ -30,7 +30,7 @@ class ProductTypeDetailView(DetailView):
 class ProductTypeCreateView(CreateView):
     model = ProductType
     form_class = ProductTypeForm
-    template_name = 'producttypes/producttype_from.html'
+    template_name = 'producttypes/producttype_form.html'
     success_url = reverse_lazy('producttype_list')
 
 class ProductTypeUpdateView(UpdateView):
@@ -41,7 +41,7 @@ class ProductTypeUpdateView(UpdateView):
 
 class ProductTypeDeleteView(DeleteView):
     model = ProductType
-    template_name = 'producttypes/producttype_confirm_delete.html'
+    template_name = 'producttypes/producttype_delete.html'
     success_url = reverse_lazy('producttype_list')
 
 class ProductListView(ListView):
@@ -67,7 +67,7 @@ class ProductUpdateView(UpdateView):
 
 class ProductDeleteView(DeleteView):
     model = Product
-    template_name = 'products/product_confirm_delete.html'
+    template_name = 'products/product_delete.html'
     success_url = reverse_lazy('product_list')
 
 class SupplierListView(ListView):
@@ -93,7 +93,7 @@ class SupplierUpdateView(UpdateView):
 
 class SupplierDeleteView(DeleteView):
     model = Supplier
-    template_name = 'suppliers/supplier_confirm_delete.html'
+    template_name = 'suppliers/supplier_delete.html'
     success_url = reverse_lazy('supplier_list')
 
 class StockListView(ListView):
@@ -119,7 +119,7 @@ class StockUpdateView(UpdateView):
 
 class StockDeleteView(DeleteView):
     model = Stock
-    template_name = 'stocks/stock_confirm_delete.html'
+    template_name = 'stocks/stock_delete.html'
     success_url = reverse_lazy('stock_list')
 
 class IngredientListView(ListView):
@@ -145,7 +145,7 @@ class IngredientUpdateView(UpdateView):
 
 class IngredientDeleteView(DeleteView):
     model = Ingredient
-    template_name = 'ingredients/ingredient_confirm_delete.html'
+    template_name = 'ingredients/ingredient_delete.html'
     success_url = reverse_lazy('ingredient_list')
 
 

@@ -1,0 +1,24 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>{%block title_name%} {% endblock %}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    {% tailwind_css %}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap"
+      rel="stylesheet"
+    />
+
+  </head>
+  <body class="bg-gray-50 font-serif leading-normal tracking-normal">
+    {%block body%} {%block header%} {%include "_inc/_header.html" %}
+    {%endblock%}
+    <main class="container mx-auto flex justify-between items-center py-8 max-w-[1280px]">{% block content %} {% endblock %}</main>
+    {%block footer%} {%include "_inc/_footer.html"%} {%endblock %} {%endblock%}
+  </body>
+</html>

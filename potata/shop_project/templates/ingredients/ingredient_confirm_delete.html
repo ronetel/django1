@@ -1,7 +1,0 @@
-<h1>Удалить ингредиент</h1>
-<p>Вы уверены, что хотите удалить "{{ ingredient.name }}"?</p>
-<form method="post">
-  {% csrf_token %}
-  <button type="submit">Подтвердить</button>
-</form>
-<a href="{% url 'ingredient_list' %}">Отмена</a>

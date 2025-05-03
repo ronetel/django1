@@ -9,9 +9,10 @@
   */
 @source "../../../**/*.{html}";
 
-@theme{
+@theme {
   --color-main: #290102;
 }
+
 body {
   font-family: 'Dela Gothic One', sans-serif;
 }

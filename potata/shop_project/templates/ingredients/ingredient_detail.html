@@ -1,8 +1,21 @@
-<h1>{{ ingredient.name }}</h1>
-<p>Поставщик: {{ ingredient.supplier.name }}</p>
-<p>Склад: {{ ingredient.stock.name }}</p>
-<p>Количество: {{ ingredient.quantity }}</p>
-<img src="{{ ingredient.img.url }}" alt="{{ ingredient.name }}" />
-<a href="{% url 'ingredient_update' ingredient.pk %}">Изменить</a>
-<a href="{% url 'ingredient_delete' ingredient.pk %}">Удалить</a>
-<a href="{% url 'ingredient_list' %}">Назад к списку</a>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title_name %}
+{{ ingredient.name }}
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto p-4">
+  <h1 class="text-3xl font-bold mb-4">{{ ingredient.name }}</h1>
+  <p class="mb-2">Поставщик: {{ ingredient.supplier.name }}</p>
+  <p class="mb-2">Склад: {{ ingredient.stock.name }}</p>
+  <p class="mb-2">Количество: {{ ingredient.quantity }}</p>
+  <img src="{{ ingredient.img.url }}" alt="{{ ingredient.name }}" class="w-64 h-64 object-cover rounded mb-4">
+  <div class="flex justify-between items-center">
+    <a href="{% url 'ingredient_update' ingredient.pk %}" class="hover:underline text-white px-4 py-2 rounded">Изменить</a>
+    <a href="{% url 'ingredient_delete' ingredient.pk %}" class="hover:underline text-white px-4 py-2 rounded">Удалить</a>
+  </div>
+  <a href="{% url 'ingredient_list' %}" class="text-red-900 hover:underline block mt-4">Назад к списку</a>
+</div>
+{% endblock %}

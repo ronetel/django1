@@ -1,0 +1,9 @@
+{% extends "base.html" %} {%load static%} {%block title_name%} 
+{% if form.instance.pk %}Изменить{% else %}Добавить{% endif %} тип продукта продукта
+{% endblock %} {% block content %}
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <button class='hover:underline' type="submit">Сохранить</button>
+</form>
+<a class='hover:underline' href="{% url 'producttype_list' %}">Назад к списку</a>
+{% endblock %}

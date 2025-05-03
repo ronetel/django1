@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title_name %}
+Удалить склад
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto p-4 max-w-lg">
+  <h1 class="text-3xl font-bold mb-4">Удалить склад</h1>
+  <p class="mb-4">Вы уверены, что хотите удалить "{{ stock.name }}"?</p>
+  <form method="post" class="flex justify-end">
+    {% csrf_token %}
+    <button type="submit" class="bg-red-900 hover:bg-main text-white font-bold py-2 px-4 rounded">Подтвердить</button>
+  </form>
+  <a href="{% url 'stock_list' %}" class="hover:underline block mt-4">Отмена</a>
+</div>
+{% endblock %}

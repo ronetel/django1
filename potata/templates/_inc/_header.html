@@ -1,0 +1,73 @@
+<header class="bg-main text-white shadow-md">
+  <nav
+    class="container mx-auto flex justify-between items-center py-8 max-w-[1280px] ">
+    <div class="flex items-center space-x-2">
+      <h1 class="text-2xl md:text-2xl font-dela">GREEN BITE</h1>
+    </div>
+    <ul class="hidden md:flex space-x-6 justify-center">
+      <li>
+        <a href="{% url 'main' %}" class="hover:text-dop-text">Главная</a>
+      </li>
+      <li class="relative group">
+        <a class="hover:text-dop-text">О компании</a>
+        <ul
+          class="absolute hidden group-hover:block bg-white text-black shadow-md"
+        >
+          <li>
+            <a
+              href="{% url 'contacts' %}"
+              class="block px-4 py-2 hover:bg-gray-200"
+              >Контакты</a
+            >
+          </li>
+          <li>
+            <a
+              href="{% url 'find-us' %}"
+              class="block px-4 py-2 hover:bg-gray-200"
+              >Как нас найти</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li class="relative group">
+        <a class="hover:text-dop-text">Товары</a>
+        <ul
+          class="absolute hidden group-hover:block bg-white text-black shadow-md"
+        >
+          <li>
+            <a
+              href="{% url 'categories' %}"
+              class="block px-4 py-2 hover:bg-gray-200"
+              >Категории</a
+            >
+          </li>
+          <li>
+            <a
+              href="{% url 'product' %}"
+              class="block px-4 py-2 hover:bg-gray-200"
+              >Все товары</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="{% url 'cart' %}" class="hover:text-dop-text">Корзина</a>
+      </li>
+    </ul>
+    <div class="md:hidden">
+      <button class="text-white focus:outline-none">
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+</header>
