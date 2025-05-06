@@ -22,7 +22,7 @@
     <form method="post" action="{% url 'basket_add' product.pk %}">
       {% csrf_token %}
       {{ form_basket.as_p }}
-      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Добавить в корзину</button>
+      <button type="submit" class="bg-red-900 text-white px-4 py-2 rounded hover:bg-main">Добавить в корзину</button>
     </form>
   {% endif %}
 </div>

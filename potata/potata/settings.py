@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'tailwind',
     'shop_project',
     'django_browser_reload',
-    'basket'
+    'basket',
+    'api_shop',
+    'rest_framework',
 ]
 TAILWIND_APP_NAME = 'shop_project'
 
