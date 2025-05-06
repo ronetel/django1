@@ -11,10 +11,19 @@
   <p class="mb-2">Цена: {{ product.price }}</p>
   <p class="mb-2">Тип: {{ product.product_type.name }}</p>
   <img src="{{ product.img.url }}" alt="{{ product.name }}" class="w-64 h-64 object-cover rounded mb-4">
-  <div class="flex justify-between items-center">
-    <a href="{% url 'product_update' product.pk %}" class="hover:underline' text-white px-4 py-2 rounded">Изменить</a>
-    <a href="{% url 'product_delete' product.pk %}" class="hover:underline' text-white px-4 py-2 rounded">Удалить</a>
+  <div class="flex justify-between items-center mb-4">
+    {% if request.user.is_staff %}
+      <a href="{% url 'product_update' product.pk %}" class="hover:underline px-4 py-2 rounded">Изменить</a>
+      <a href="{% url 'product_delete' product.pk %}" class="hover:underline px-4 py-2 rounded">Удалить</a>
+    {% endif %}
+    <a href="{% url 'product_list' %}" class="text-red-900 hover:underline block mt-4">Назад к списку</a>
   </div>
-  <a href="{% url 'product_list' %}" class="text-red-900 hover:underline block mt-4">Назад к списку</a>
+  {% if request.user.is_authenticated %}
+    <form method="post" action="{% url 'basket_add' product.pk %}">
+      {% csrf_token %}
+      {{ form_basket.as_p }}
+      <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Добавить в корзину</button>
+    </form>
+  {% endif %}
 </div>
 {% endblock %}

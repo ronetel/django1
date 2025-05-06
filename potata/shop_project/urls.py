@@ -5,7 +5,6 @@ urlpatterns = [
     path('main', main_view, name='main'),
     path('contacts', contacts_view, name='contacts'),
     path('find-us', find_us_view, name='find-us'),
-    path('product', products_view, name='product'),
     path('categories', categories_view, name='categories'),
     path('cart', cart_view, name='cart'),
 
@@ -40,4 +39,8 @@ urlpatterns = [
     path('ingredients/new/', IngredientCreateView.as_view(), name='ingredient_create'),
     path('ingredients/<int:pk>/edit/', IngredientUpdateView.as_view(), name='ingredient_update'),
     path('ingredients/<int:pk>/delete/', IngredientDeleteView.as_view(), name='ingredient_delete'),
+
+    path('login/',login_user, name='login_page'),
+    path('registration/', registration_user, name='registration_page'),
+    path('logout/', logout_user, name='logout_page'),
 ]

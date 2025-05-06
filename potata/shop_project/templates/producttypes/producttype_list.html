@@ -8,14 +8,18 @@
 {% block content %}
 <div class="container mx-auto p-4">
   <h1 class="text-3xl font-bold mb-6 text-center">Типы продуктов</h1>
-  <a href="{% url 'producttype_create' %}" class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded mb-4 inline-block">Добавить новый тип продукта</a>
+  {% if request.user.is_staff %}
+  <a href="{% url 'producttype_create' %}" class="bg-red-900 hover:bg-main text-white px-4 py-2 rounded mb-4 inline-block">Добавить новый тип продукта</a>
+  {% endif %}
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
     {% for producttype in producttypes %}
     <div class="bg-white shadow-lg rounded-lg p-4 transform transition-transform duration-300 hover:scale-105">
       <h2 class="text-xl font-semibold mb-2">{{ producttype.name }}</h2>
       <div class="flex justify-between items-center">
-        <a href="{% url 'producttype_update' producttype.pk %}" class="text-green-500 hover:underline">Изменить</a>
-        <a href="{% url 'producttype_delete' producttype.pk %}" class="text-red-500 hover:underline">Удалить</a>
+        {% if request.user.is_staff %}
+        <a href="{% url 'producttype_update' producttype.pk %}" class="hover:underline">Изменить</a>
+        <a href="{% url 'producttype_delete' producttype.pk %}" class="hover:underline">Удалить</a>
+        {% endif %}
       </div>
     </div>
     {% endfor %}

@@ -3,6 +3,12 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import *
 from .forms import *
+from basket.forms import BasketAddProductForm
+from django.contrib.auth import login, logout
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.decorators import login_required, permission_required 
+from django.utils.decorators import method_decorator
+from django.shortcuts import redirect
 
 # Create your views here.
 def main_view(request):
@@ -53,6 +59,11 @@ class ProductDetailView(DetailView):
     model = Product
     template_name = 'products/product_detail.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_basket'] = BasketAddProductForm()
+        return context
+        
 class ProductCreateView(CreateView):
     model = Product
     form_class = ProductForm
@@ -149,3 +160,37 @@ class IngredientDeleteView(DeleteView):
     success_url = reverse_lazy('ingredient_list')
 
 
+def login_user(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST) 
+        if form.is_valid():
+            login(request, form.get_user())
+            if request.GET.get('next'):
+                return redirect(request.GET.get('next'))
+            return redirect('main')
+    else:
+        form = AuthenticationForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'auth/login.html', context)
+
+def registration_user(request):
+    if request.method == 'POST':
+        form = RegistrationForm(data=request.POST) 
+        if form.is_valid():
+            login(request, form.save())
+            if request.GET.get('next'):
+                return redirect(request.GET.get('next')) 
+            return redirect('main')
+    else:
+        form = RegistrationForm()
+    context = {
+        'form': form
+    }
+    
+    return render(request, 'auth/registration.html', context)
+
+def logout_user(request):
+    logout(request)
+    return redirect('main')

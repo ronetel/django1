@@ -11,8 +11,8 @@
   <p class="mb-4">Вы уверены, что хотите удалить "{{ producttype.name }}"?</p>
   <form method="post" class="flex justify-end">
     {% csrf_token %}
-    <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Подтвердить</button>
+    <button type="submit" class="bg-red-900 hover:bg-main text-white font-bold py-2 px-4 rounded">Подтвердить</button>
   </form>
-  <a href="{% url 'producttype_list' %}" class="text-blue-500 hover:underline block mt-4">Отмена</a>
+  <a href="{% url 'producttype_list' %}" class="hover:underline block mt-4">Отмена</a>
 </div>
 {% endblock %}

@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tailwind',
     'shop_project',
-    'django_browser_reload'
+    'django_browser_reload',
+    'basket'
 ]
 TAILWIND_APP_NAME = 'shop_project'
 
@@ -136,3 +137,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+
+BASKET_SESSION_ID = 'basket'
+
+LOGIN_URL = '/login/'

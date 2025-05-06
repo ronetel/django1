@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_name %}
+Корзина
+{% endblock %}
+
+{% block content %}
+<div class="bg-gray-100 p-4">
+  <table class="min-w-full bg-white border border-gray-300">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="py-2 px-4 border-b">Фото</th>
+        <th class="py-2 px-4 border-b">Название</th>
+        <th class="py-2 px-4 border-b">Количество</th>
+        <th class="py-2 px-4 border-b">Цена</th>
+        <th class="py-2 px-4 border-b">Общая цена</th>
+        <th class="py-2 px-4 border-b">Удалить</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in basket %}
+        {% with item.product as product %}
+          <tr>
+            <td class="py-2 px-4 border-b">
+            {% if product.img %}
+                <img src="{{product.img.url}}" alt="..." class="max-h-16 max-w-16 object-contain border rounded-lg"/>
+            {% else %}
+                <img src="{% static 'shop/images/no_photo.jpg' %}" alt="..." />
+            {% endif %}
+            </td>
+            <td class="py-2 px-4 border-b">
+              <a href="{% url 'product_detail' product.pk %}" class="hover:underline">{{ product.name }}</a>
+            </td>
+            <td class="py-2 px-4 border-b text-center">{{ item.count }}</td>
+            <td class="py-2 px-4 border-b text-center">{{ item.price }}</td>
+            <td class="py-2 px-4 border-b text-center">{{ item.total_price }}</td>
+            <td class="py-2 px-4 border-b text-center">
+              <a href="{% url 'basket_remove' product.pk %}" class="hover:underline">Удалить</a>
+            </td>
+          </tr>
+        {% endwith %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="mt-4 flex justify-between">
+    <div>
+      <span class="text-gray-600">Общее количество:</span>
+      <span class="font-bold">{{ basket|length }}</span>
+    </div>
+    <div>
+      <span class="text-gray-600">Общая цена:</span>
+      <span class="font-bold">{{ basket.get_total_price }}</span>
+    </div>
+    <div>
+        <a href="{% url 'basket_clear' %}" class="text-red-900 hover:underline">Очистить корзину</a>
+    </div>
+  </div>
+
+  <div class="mt-4 text-center">
+    {% if basket|length > 0 %}
+      <a href="{% url 'order_open' %}" class="bg-red-900 text-white py-2 px-4 rounded hover:bg-main">Оформить заказ</a>
+    {% else %}
+      <p class="text-gray-500">Ваша корзина пуста.</p>
+    {% endif %}
+    <a href="{% url 'product_list' %}" class="text-red-900 hover:underline">Назад к каталогу</a>
+  </div>
+</div>
+{% endblock %}
