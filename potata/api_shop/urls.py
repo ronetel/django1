@@ -14,3 +14,4 @@ router.register('ingredients', IngredientViewSet, basename='ingredients')
 router.register('recipes', RecipeViewSet, basename='recipes')
 router.register('orders', OrderViewSet, basename='orders')
 router.register('productincheck', ProductInCheckViewSet, basename='productincheck')
+urlpatterns += router.urls
